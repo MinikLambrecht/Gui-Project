@@ -1,24 +1,49 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Switch, Route } from 'react-router-dom';
+import { NavLink, Switch, Route, Link} from 'react-router-dom';
 import './App.css';
+
+import LinkContainer from 'react-bootstrap';
+
+import { Navbar, Nav, NavItem, NavDropdown } from 'react-bootstrap';
 
 const App = () => (
   <div className='app'>
-    <h1>React Router Demo</h1>
     <Navigation />
     <Main />
   </div>
 );
 
 const Navigation = () => (
-   <nav>
-     <ul>
-       <li><NavLink exact activeClassName="current" to='/'>Home</NavLink></li>
-       <li><NavLink exact activeClassName="current" to='/about'>About</NavLink></li>
-       <li><NavLink exact activeClassName="current" to='/contact'>Contact</NavLink></li>
-     </ul>
-   </nav>
+  // Make navbar without Href (Href reloads the site...)
+  <Navbar collapseOnSelect id="navbar">
+    <div className="container">
+        <Navbar.Header className="navbar-header">
+            <Link className="navbar-brand" to="/">Website</Link>
+            <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+            <Nav id="nav">
+                <LinkContainer exact to="/">
+                    <NavItem>Home</NavItem>
+                </LinkContainer>
+                <LinkContainer exact to="/club">
+                    <NavItem>Club</NavItem>
+                </LinkContainer>
+                <LinkContainer exact to="/contact">
+                    <NavItem>Contact</NavItem>
+                </LinkContainer>
+            </Nav>
+            <Nav pullRight>
+                <LinkContainer to="/login">
+                    <NavItem >Login</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/register">
+                    <NavItem>register</NavItem>
+                </LinkContainer>
+            </Nav>
+        </Navbar.Collapse>
+    </div>
+</Navbar>
  );
 
 const Home = () => (
