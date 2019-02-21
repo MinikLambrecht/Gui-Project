@@ -1,79 +1,48 @@
 import React from 'react';
-import { NavLink, Switch, Route, Link} from 'react-router-dom';
-import './App.css';
+import {BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
-import LinkContainer from 'react-bootstrap';
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
 
-import { Navbar, Nav, NavItem, NavDropdown } from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => (
   <div className='app'>
     <Navigation />
-    <Main />
   </div>
 );
 
 const Navigation = () => (
-  // Make navbar without Href (Href reloads the site...)
-  <Navbar collapseOnSelect id="navbar">
-    <div className="container">
-        <Navbar.Header className="navbar-header">
-            <Link className="navbar-brand" to="/">Website</Link>
-            <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-            <Nav id="nav">
-                <LinkContainer exact to="/">
-                    <NavItem>Home</NavItem>
-                </LinkContainer>
-                <LinkContainer exact to="/club">
-                    <NavItem>Club</NavItem>
-                </LinkContainer>
-                <LinkContainer exact to="/contact">
-                    <NavItem>Contact</NavItem>
-                </LinkContainer>
-            </Nav>
-            <Nav pullRight>
-                <LinkContainer to="/login">
-                    <NavItem >Login</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/register">
-                    <NavItem>register</NavItem>
-                </LinkContainer>
-            </Nav>
-        </Navbar.Collapse>
+  <Router>
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <NavLink className="navbar-brand" to={"/"}>Hidden brand</NavLink>
+          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li className="nav-item">
+              <NavLink className="nav-link" activeClassName="nav-link active" exact={true} to={"/"}>Home</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" activeClassName="nav-link active" to={"/about"}>About</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" activeClassName="nav-link active" to={"/contact"}>Contact</NavLink>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <hr />
+
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/contact" component={Contact} />
     </div>
-</Navbar>
+  </Router>
  );
-
-const Home = () => (
-  <div className='home'>
-    <h1>Welcome to my portfolio website</h1>
-    <p> Feel free to browse around and learn more about me.</p>
-  </div>
-);
-
-const About = () => (
-  <div className='about'>
-    <h1>About Me</h1>
-    <p>Ipsum dolor dolorem consectetur est velit fugiat. Dolorem provident corporis fuga saepe distinctio ipsam? Et quos harum excepturi dolorum molestias?</p>
-    <p>Ipsum dolor dolorem consectetur est velit fugiat. Dolorem provident corporis fuga saepe distinctio ipsam? Et quos harum excepturi dolorum molestias?</p>
-  </div>
-);
-
-const Contact = () => (
-  <div className='contact'>
-    <h1>Contact Me</h1>
-    <p>You can reach me via email: <strong>hello@example.com</strong></p>
-  </div>
-);
-
-const Main = () => (
-  <Switch>
-    <Route exact path='/' component={Home}></Route>
-    <Route exact path='/about' component={About}></Route>
-    <Route exact path='/contact' component={Contact}></Route>
-  </Switch>
-);
 
 export default App;
