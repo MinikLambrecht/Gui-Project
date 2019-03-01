@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
 
 const Header = () => (
   <header>
@@ -27,6 +27,9 @@ const Header = () => (
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/login">Login</NavLink>
+          </li>
+          <li className="nav-item">
+            <button>Log Out</button>
           </li>
         </form>
       </div>

@@ -23,7 +23,7 @@ const Contact = () => (
               <div className="row">
                 <div className="col-md-6">
                   <div className="form-group">
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">Full Name</label>
                     <input type="text" className="form-control" id="name" placeholder="Enter name" required="required" />
                   </div>
                   <div className="form-group">
@@ -39,9 +39,9 @@ const Contact = () => (
                     <label htmlFor="subject">Subject</label>
                     <select id="subject" name="subject" className="form-control" required="required">
                       <option value="na" defaultValue="">Choose One:</option>
-                      <option value="service">General Customer Service</option>
+                      <option value="report">Report User</option>
                       <option value="suggestions">Suggestions</option>
-                      <option value="product">Product Support</option>
+                      <option value="bug/other">Report a bug/other</option>
                     </select>
                   </div>
                 </div>

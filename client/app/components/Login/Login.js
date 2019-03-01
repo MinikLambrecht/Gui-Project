@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import 'whatwg-fetch';
 
 import {getFromStorage, setInStorage} from '../../utils/Storage';
 
 import '../../styles/pagecss/Login/Login'
 
-class Home extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -87,7 +88,7 @@ class Home extends Component {
       .then(json => {
         console.log('json', json);
         if (json.success) {
-          setInStorage('App', { token: json.token });
+          setInStorage('GPC Playtime', { token: json.token });
           this.setState({
             signInError: json.message,
             isLoading: false,
@@ -179,12 +180,11 @@ class Home extends Component {
     }
 
     return (
-      <div>
-        <p>Account</p>
-        <button onClick={this.logout}>Logout</button>
-      </div>
+      <footer>
+        <button onClick={this.logout}>Logout Biaaaaatch</button>
+      </footer>
     );
   }
 }
 
-export default Home;
+export default Login;

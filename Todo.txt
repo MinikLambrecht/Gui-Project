@@ -1,0 +1,8 @@
+[Ideas]
+- Make contact form send the message to a db.
+
+[Bugs]
+None >:3
+
+[WIP]
+- Auth navbar mode

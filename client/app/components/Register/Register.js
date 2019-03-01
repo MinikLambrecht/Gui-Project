@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import 'whatwg-fetch';
 
 import {getFromStorage, setInStorage} from '../../utils/Storage';
 
 import '../../styles/pagecss/Register/Register'
 
-class Home extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
 
@@ -148,10 +149,10 @@ class Home extends Component {
 
     return (
       <div>
-        <p>test</p>
+        <h1>TEST</h1>
       </div>
     );
   }
 }
 
-export default Home;
+export default Register;
