@@ -12,7 +12,7 @@ const isProd = NODE_ENV === 'production';
 module.exports = {
   entry: {
     'app': [
-      helpers.root('client/app/index.js')
+      helpers.root('frontend/src/reducers/index.js')
     ]
   },
 
@@ -24,7 +24,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.css', '.scss', '.html'],
     alias: {
-      'app': 'client/app'
+      'app': 'frontend/src'
     }
   },
 
@@ -33,7 +33,7 @@ module.exports = {
       // JS files
       {
         test: /\.jsx?$/,
-        include: helpers.root('client'),
+        include: helpers.root('frontend'),
         loader: 'babel-loader'
       },
 
@@ -75,7 +75,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: helpers.root('client/public/index.html'),
+      template: helpers.root('frontend/public/index.html'),
       inject: 'body'
     }),
 
@@ -85,7 +85,7 @@ module.exports = {
     }),
 
     new CopyWebpackPlugin([{
-      from: helpers.root('client/public')
+      from: helpers.root('frontend/public')
     }])
   ]
 };
