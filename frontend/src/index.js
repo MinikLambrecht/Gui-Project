@@ -14,6 +14,8 @@ import Login from './components/Login';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 
+import './components/Styles/DefaultTheme.css';
+
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);

@@ -22,10 +22,10 @@ class Navbar extends Component {
                 <NavLink className="nav-link" exact={true} activeClassName="nav-link active" to="/">Home</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName="nav-link active" to="/about">About</NavLink>
+                <NavLink className="nav-link" activeClassName="nav-link active" to="/Search">Search</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName="nav-link active" to="/contact">Contact</NavLink>
+                <NavLink className="nav-link" activeClassName="nav-link active" to="/contact">Contact Us</NavLink>
               </li>
             </ul>
             <form className="form-inline navbar-nav my-2 my-lg-0">
@@ -46,10 +46,7 @@ class Navbar extends Component {
             <NavLink className="nav-link" exact={true} activeClassName="nav-link active" to="/">Home</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" activeClassName="nav-link active" to="/about">About</NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" activeClassName="nav-link active" to="/contact">Contact</NavLink>
+            <NavLink className="nav-link" activeClassName="nav-link active" to="/contact">Contact Us</NavLink>
           </li>
         </ul>
         <form className="form-inline navbar-nav my-2 my-lg-0">
@@ -81,4 +78,4 @@ const mapStateToProps = (state) => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, { logoutUser })(withRouter(Navbar));
+export default connect(mapStateToProps, { logoutUser }, null,{ pure: false })(withRouter(Navbar));

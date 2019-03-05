@@ -3,7 +3,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 
 const App = ({ children }) => (
-  <div className="container">
+  <div>
     <header>
       <Navbar />
     </header>
@@ -12,9 +12,11 @@ const App = ({ children }) => (
       {children}
     </main>
 
+{/* Uncomment if footer is needed.
     <footer>
       <p> Footer </p>
     </footer>
+*/}
   </div>
 );
 
