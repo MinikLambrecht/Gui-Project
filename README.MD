@@ -61,4 +61,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* This projects foundation was made with [This](https://appdividend.com/2018/07/18/react-redux-node-mongodb-jwt-authentication/) tutorial.
+* This project is based on [This](https://appdividend.com/2018/07/18/react-redux-node-mongodb-jwt-authentication/) example.
