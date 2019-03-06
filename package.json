@@ -1,0 +1,18 @@
+{
+  "name": "Gui-Project",
+  "version": "1.0.0",
+  "scripts": {
+    "start:dev": "concurrently --kill-others \"cd backend && nodemon app.js\" \"cd frontend && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MinikLambrecht/Gui-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MinikLambrecht/Gui-Project/issues"
+  },
+  "homepage": "https://github.com/MinikLambrecht/Gui-Project#readme"
+}
