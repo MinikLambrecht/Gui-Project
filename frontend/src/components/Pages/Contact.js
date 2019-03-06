@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import PhoneInput from './PhoneInput';
+import PhoneInput from '../PhoneInput';
 
 import './Styles/ContactCSS.css';
 

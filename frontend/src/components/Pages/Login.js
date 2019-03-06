@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authentication';
 import { withRouter } from 'react-router-dom';
-import { registerUser } from '../actions/authentication';
 import classnames from 'classnames';
 
-class Register extends Component {
+class Login extends Component {
 
     constructor() {
         super();
         this.state = {
-            name: '',
             email: '',
             password: '',
-            password_confirm: '',
             errors: {}
         }
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -29,12 +27,16 @@ class Register extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = {
-            name: this.state.name,
             email: this.state.email,
             password: this.state.password,
-            password_confirm: this.state.password_confirm
         }
-        this.props.registerUser(user, this.props.history);
+        this.props.loginUser(user);
+    }
+
+    componentDidMount() {
+        if(this.props.auth.isAuthenticated) {
+            this.props.history.push('/');
+        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -48,31 +50,12 @@ class Register extends Component {
         }
     }
 
-    componentDidMount() {
-        if(this.props.auth.isAuthenticated) {
-            this.props.history.push('/');
-        }
-    }
-
     render() {
-        const { errors } = this.state;
+        const {errors} = this.state;
         return(
         <div className="container" style={{ marginTop: '50px', width: '700px'}}>
-            <h2 style={{marginBottom: '40px'}}>Registration</h2>
+            <h2 style={{marginBottom: '40px'}}>Login</h2>
             <form onSubmit={ this.handleSubmit }>
-                <div className="form-group">
-                    <input
-                    type="text"
-                    placeholder="Name"
-                    className={classnames('form-control form-control-lg', {
-                        'is-invalid': errors.name
-                    })}
-                    name="name"
-                    onChange={ this.handleInputChange }
-                    value={ this.state.name }
-                    />
-                    {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
-                </div>
                 <div className="form-group">
                     <input
                     type="email"
@@ -100,21 +83,8 @@ class Register extends Component {
                     {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                 </div>
                 <div className="form-group">
-                    <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    className={classnames('form-control form-control-lg', {
-                        'is-invalid': errors.password_confirm
-                    })}
-                    name="password_confirm"
-                    onChange={ this.handleInputChange }
-                    value={ this.state.password_confirm }
-                    />
-                    {errors.password_confirm && (<div className="invalid-feedback">{errors.password_confirm}</div>)}
-                </div>
-                <div className="form-group">
                     <button type="submit" className="btn btn-primary">
-                        Register User
+                        Login User
                     </button>
                 </div>
             </form>
@@ -123,14 +93,15 @@ class Register extends Component {
     }
 }
 
-Register.propTypes = {
-    registerUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
-};
+Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     auth: state.auth,
     errors: state.errors
-});
+})
 
-export default connect(mapStateToProps,{ registerUser })(withRouter(Register))
+export default connect(mapStateToProps, { loginUser })(withRouter(Login))

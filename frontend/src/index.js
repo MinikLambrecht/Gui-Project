@@ -8,13 +8,13 @@ import setAuthToken from './setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authentication';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
-import Contact from './components/Contact';
-import Register from './components/Register';
-import Login from './components/Login';
-import Home from './components/Home';
-import NotFound from './components/NotFound';
+import Contact from './components/Pages/Contact';
+import Register from './components/Pages/Register';
+import Login from './components/Pages/Login';
+import Home from './components/Pages/Home';
+import NotFound from './components/Pages/NotFound';
 
-import './components/Styles/DefaultTheme.css';
+import './components/Pages/Styles/DefaultTheme.css';
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
