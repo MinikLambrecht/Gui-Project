@@ -12,6 +12,7 @@ import Contact from './components/Pages/Contact';
 import Register from './components/Pages/Register';
 import Login from './components/Pages/Login';
 import Home from './components/Pages/Home';
+import Search from './components/Pages/Search';
 import NotFound from './components/Pages/NotFound';
 
 import './components/Pages/Styles/DefaultTheme.css';
@@ -37,6 +38,7 @@ render((
           <Route path="/contact" component={ Contact } />
           <Route path="/register" component={ Register } />
           <Route path="/login" component={ Login } />
+          <Route path="/search" component={ Search } />
           <Route component={NotFound}/>
         </Switch>
       </App>
