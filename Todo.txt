@@ -5,4 +5,4 @@
 None >:3
 
 [WIP]
-- Search function
+- Use of Environmental Variables (.env)

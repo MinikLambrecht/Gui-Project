@@ -1,36 +1,43 @@
 import React, { Component } from 'react';
+import MapT from '../Map';
+
+import './Styles/SearchCSS.css';
 
 export default class Search extends Component {
 constructor() {
   super();
   this.state = {
-    location: "http://maps.google.com/?q=5700&output=embed",
-    inputLoc: ""
+    updateLoc: '',
+    location: 'http://maps.google.com/?q=5700&output=embed'
     };
-}
 
-update() {
+    this.addValue = this.addValue.bind(this);
+    this.updateInput = this.updateInput.bind(this);
+  }
 
-  this.setState({ location: "http://maps.google.com/?q=" + this.inputLoc + "&output=embed" });
-}
-
-    render() {
-        return (
-          <div className="container">
-            <div className="row">
-            <input type="text" value={this.state.inputLoc} className="form-control" placeholder="Postalcode/City name" />
-            <button type="submit" onClick={this.update()} className="btn btn-primary">Search</button>
-              <div className="col-sm">
-
-              </div>
-              <div className="col-sm">
-                <iframe title="SearchForPark" src="http://maps.google.com/?q=5700&output=embed" width="600" height="450" frameBorder="0" allowFullScreen></iframe>
-              </div>
-              <div className="col-sm">
-              {this.state.location}
-              </div>
-            </div>
-          </div>
-        );
+  addValue(evt){
+    evt.preventDefault();
+    if (this.state.updateLoc !== undefined)
+    {
+      this.setState({ location: this.state.updateLoc })
     }
+  }
+
+  updateInput(evt) {
+    this.setState({ updateLoc: 'http://maps.google.com/?q=' + evt.target.value + ', dog park&output=embed' })
+  }
+
+
+
+  render() {
+    return (
+      <div className="container">
+        <div className="map-responsive">
+          <MapT />
+        </div>
+        <input type="text" onChange={this.updateInput} className="form-control" placeholder="Postalcode/City name" />
+        <button type="submit" onClick={this.addValue} className="btn btn-primary">Search</button>
+      </div>
+    );
+  }
 }

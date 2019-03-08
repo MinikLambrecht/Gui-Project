@@ -14,6 +14,7 @@ This is a full stack web application built using [React.js](https://reactjs.org/
 8.  Validator
 9.  Json Web Token
 10. Bootstrap
+11. Google Maps API
 
 ## Features
 

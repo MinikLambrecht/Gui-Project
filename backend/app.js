@@ -12,6 +12,8 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./db');
 const webpackConfig = require('./webpack.config');
 
+const dotenv = require('dotenv');
+
 const isDev = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 5000;
 
@@ -72,5 +74,7 @@ app.listen(PORT, (err) => {
     console.log(err);
   }
 
+  dotenv.config();
+  console.log(`${process.env.REACT_APP_GOOGLE_API_KEY}`);
  console.log(`>>> 🌎 Open http://localhost:${PORT}/ in your browser.`);
 });

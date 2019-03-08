@@ -5,7 +5,8 @@
     "@babel/core": "^7.3.4",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
-    "concurrently": "^4.1.0"
+    "concurrently": "^4.1.0",
+    "google-maps-react": "^2.0.2"
   },
   "scripts": {
     "start:dev": "concurrently --kill-others \"cd backend && nodemon app.js\" \"cd frontend && npm start\""
