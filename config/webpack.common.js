@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const dotenv = require('dotenv').config('../development.env');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -7,7 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const helpers = require('./helpers');
 
 const NODE_ENV = process.env.NODE_ENV;
-const REACT_APP_GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const isProd = NODE_ENV === 'production';
 
 module.exports = {
@@ -72,7 +73,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(NODE_ENV),
-        REACT_APP_GOOGLE_API_KEY: JSON.stringify(REACT_APP_GOOGLE_API_KEY)
+        GOOGLE_API_KEY: JSON.stringify(GOOGLE_API_KEY)
       }
     }),
 

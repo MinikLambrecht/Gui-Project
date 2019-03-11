@@ -1,5 +1,5 @@
 const express = require('express');
-const dotenv = require('dotenv').config({path: '../.env'});
+const dotenv = require('dotenv').config({path: '../.development.env'});
 const historyApiFallback = require('connect-history-api-fallback');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -40,7 +40,7 @@ app.use('/api/users', users);
 
 if (isDev){
   const compiler = webpack(webpackConfig);
-  console.log(process.env.REACT_APP_API_KEY);
+
   app.use(historyApiFallback({
     verbose: false
   }));
@@ -68,6 +68,7 @@ if (isDev){
   });
 }
 
+console.log(process.env.GOOGLE_API_KEY);
 app.listen(PORT, (err) => {
   if (err) {
     console.log(err);
