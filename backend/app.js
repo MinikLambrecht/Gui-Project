@@ -40,7 +40,7 @@ app.use('/api/users', users);
 
 if (isDev){
   const compiler = webpack(webpackConfig);
-
+  console.log(process.env.REACT_APP_API_KEY);
   app.use(historyApiFallback({
     verbose: false
   }));

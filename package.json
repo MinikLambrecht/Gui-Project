@@ -1,25 +1,64 @@
 {
-  "name": "Gui-Project",
-  "version": "1.0.0",
-  "dependencies": {
-    "@babel/core": "^7.3.4",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "concurrently": "^4.1.0",
-    "google-maps-react": "^2.0.2"
-  },
-  "scripts": {
-    "start:dev": "concurrently --kill-others \"cd backend && nodemon app.js\" \"cd frontend && npm start\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MinikLambrecht/Gui-Project.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/MinikLambrecht/Gui-Project/issues"
-  },
-  "homepage": "https://github.com/MinikLambrecht/Gui-Project#readme"
+	"name": "Gui-Project",
+	"version": "1.0.0",
+	"description": "This is a full stack web application built using [React.js](https://reactjs.org/), [Redux.js](https://redux.js.org/) & [Node.js](https://nodejs.org/en/).",
+	"scripts": {
+		"start:dev": "concurrently --kill-others \"cd backend && node app.js\" \"cd frontend && npm start \""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MinikLambrecht/Gui-Project.git"
+	},
+	"keywords": [],
+	"author": "Minik Gaarde Lambrecht",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/MinikLambrecht/Gui-Project/issues"
+	},
+	"homepage": "https://github.com/MinikLambrecht/Gui-Project#readme",
+	"dependencies": {
+		"axios": "^0.18.0",
+		"classnames": "^2.2.6",
+		"google-maps-react": "^2.0.2",
+		"jwt-decode": "^2.2.0",
+		"react": "^16.8.4",
+		"react-dom": "^16.8.4",
+		"react-phone-number-input": "^2.3.7",
+		"react-redux": "^6.0.1",
+		"react-router-dom": "^4.3.1",
+		"react-scripts": "^2.1.8",
+		"redux": "^4.0.1",
+		"redux-devtools-extension": "^2.13.8",
+		"redux-thunk": "^2.3.0",
+		"typescript": "^3.3.3333",
+		"@babel/core": "^7.3.4",
+		"autoprefixer": "^9.4.10",
+		"babel-cli": "^6.26.0",
+		"babel-loader": "^8.0.5",
+		"copy-webpack-plugin": "^5.0.0",
+		"extract-text-webpack-plugin": "^4.0.0-beta.0",
+		"html-webpack-plugin": "^3.2.0",
+		"bcrypt": "^3.0.4",
+		"body-parser": "^1.18.3",
+		"connect-history-api-fallback": "^1.6.0",
+		"dotenv": "^6.2.0",
+		"express": "^4.16.4",
+		"gravatar": "^1.8.0",
+		"jsonwebtoken": "^8.5.0",
+		"mongoose": "^5.4.18",
+		"passport": "^0.4.0",
+		"passport-jwt": "^4.0.0",
+		"validator": "^10.11.0",
+		"webpack": "4.28.3",
+		"webpack-cli": "^3.2.3",
+		"webpack-dev-middleware": "^3.6.1",
+		"webpack-dev-server": "3.1.14",
+		"webpack-hot-middleware": "^2.24.3",
+		"webpack-merge": "^4.2.1"
+	},
+	"devDependencies": {
+		"concurrently": "^4.1.0",
+		"nodemon": "^1.18.10",
+		"react-app-env": "^1.2.3"
+	}
 }

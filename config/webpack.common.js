@@ -91,5 +91,3 @@ module.exports = {
     }])
   ]
 };
-
-export defualt REACT_APP_GOOGLE_API_KEY;

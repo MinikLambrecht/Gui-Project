@@ -2,32 +2,20 @@
   "name": "frontend",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "@babel/core": "^7.3.4",
-    "axios": "^0.18.0",
-    "babel-loader": "^8.0.5",
-    "bootstrap": "^4.1.2",
-    "classnames": "^2.2.6",
-    "dotenv": "^6.2.0",
-    "google-maps-react": "^2.0.2",
-    "jquery": "^3.3.1",
-    "jwt-decode": "^2.2.0",
-    "popper.js": "^1.14.7",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-phone-number-input": "^2.3.7",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
-    "redux": "^4.0.0",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
-  },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-app-env --env-file=../development.env start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000"
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "proxy": "http://localhost:5000",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

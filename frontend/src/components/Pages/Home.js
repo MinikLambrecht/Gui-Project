@@ -5,6 +5,7 @@ export default class Home extends Component {
         return (
             <div>
                 Home Component
+               <h1>{console.log(process.env)}</h1>
             </div>
         );
     }

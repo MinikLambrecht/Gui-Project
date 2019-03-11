@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const validateRegisterInput = require('../validation/register');
@@ -36,7 +36,7 @@ router.post('/register', function(req, res) {
                 password: req.body.password,
                 avatar
             });
-            
+
             bcrypt.genSalt(10, (err, salt) => {
                 if(err) console.error('There was an error', err);
                 else {
@@ -48,7 +48,7 @@ router.post('/register', function(req, res) {
                                 .save()
                                 .then(user => {
                                     res.json(user)
-                                }); 
+                                });
                         }
                     });
                 }
