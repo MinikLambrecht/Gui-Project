@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const helpers = require('./helpers');
 
 const NODE_ENV = process.env.NODE_ENV;
+const REACT_APP_GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 const isProd = NODE_ENV === 'production';
 
 module.exports = {
@@ -70,7 +71,8 @@ module.exports = {
 
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(NODE_ENV)
+        NODE_ENV: JSON.stringify(NODE_ENV),
+        REACT_APP_GOOGLE_API_KEY: JSON.stringify(REACT_APP_GOOGLE_API_KEY)
       }
     }),
 
@@ -89,3 +91,5 @@ module.exports = {
     }])
   ]
 };
+
+export defualt REACT_APP_GOOGLE_API_KEY;

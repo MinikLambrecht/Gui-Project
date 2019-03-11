@@ -1,4 +1,5 @@
 const express = require('express');
+const dotenv = require('dotenv').config({path: '../.env'});
 const historyApiFallback = require('connect-history-api-fallback');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -11,8 +12,6 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const config = require('./db');
 const webpackConfig = require('./webpack.config');
-
-const dotenv = require('dotenv');
 
 const isDev = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 5000;
@@ -73,8 +72,5 @@ app.listen(PORT, (err) => {
   if (err) {
     console.log(err);
   }
-
-  dotenv.config();
-  console.log(`${process.env.REACT_APP_GOOGLE_API_KEY}`);
- console.log(`>>> 🌎 Open http://localhost:${PORT}/ in your browser.`);
+  console.log(`>>> 🌎 Open http://localhost:${PORT}/ in your browser.`);
 });
