@@ -1,133 +1,99 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
-import Geocode from "react-geocode";
-import Autocomplete from 'react-google-autocomplete';
-import ParkData from '../Hundeskov.json';
+import Dropdown from 'react-dropdown';
+import './Pages/Styles/Map.css';
 
-let lat = [];
-let lng = [];
+const fetch = require("isomorphic-fetch");
+const { compose, withProps, withHandlers } = require("recompose");
+const { withScriptjs, withGoogleMap, GoogleMap, Marker,} = require("react-google-maps");
 
-Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
-Geocode.enableDebug();
+/* global google */
+const MapWithAMarkerClusterer = compose(
+  withProps({
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=" + process.env.REACT_APP_GOOGLE_API_KEY + "&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `400px` }} />,
+    mapElement: <div style={{ height: `100%` }} />,
+  }),
+  withHandlers({
+    onMarkerClustererClick: () => (markerClusterer) => {
+      const clickedMarkers = markerClusterer.getMarkers()
+      console.log(`Current clicked markers length: ${clickedMarkers.length}`)
+      console.log(clickedMarkers)
+    },
+		onMarkerClick: () => (props, marker, e) => {
+	    this.setState({
+	      selectedPlace: props,
+	      activeMarker: marker,
+	      showingInfoWindow: true
+	    });
+		},
+		onClose: () => (props) => {
+		    if (this.state.showingInfoWindow) {
+		      this.setState({
+		        showingInfoWindow: false,
+		        activeMarker: null
+		      });
+		    }
+		  },
+  }),
+  withScriptjs,
+  withGoogleMap
+)(props =>
+  <GoogleMap
+    defaultZoom={12}
+    defaultCenter={{ lat: 55.396229, lng: 10.390600 }}
+  >
+	{props.markers.map(marker => (
+		<Marker
+			key={marker.Id}
+			position={{ lat: marker.Coordinates.lat, lng: marker.Coordinates.lng }}
+		>
+			<div>{marker.Parkname}</div>
+		</Marker>
+	))}
+  </GoogleMap>
+);
 
-class Map extends Component{
-
-	constructor( props ){
-		super( props );
-		this.state = {
-      onCenterChange: PropTypes.func, // @controllable generated fn
-      onZoomChange: PropTypes.func, // @controllable generated fn
-      onBoundsChange: PropTypes.func,
-      onMarkerHover: PropTypes.func,
-      onChildClick: PropTypes.func,
-      center: PropTypes.any,
-      zoom: PropTypes.number,
-      markers: PropTypes.any,
-      parks: [ lat, lng],
-			address: '',
-			city: '',
-			park: '',
-		}
-	}
-
-  static defaultProps = {
-    center: new List([55.399563, 10.385576]),
-    zoom: 12
+export default class Map extends Component{
+	componentWillMount() {
+    this.setState({ markers: [] })
   }
-
-  shouldComponentUpdate = shouldPureComponentUpdate;
 
 	/**
 	 * Get the current address from the default map position and set those values in the state
 	 */
 	componentDidMount() {
-    for( let i = 0; i < ParkData.dogparks.length; i++ ) {
-      lat[i] = ParkData.dogparks[i].Information.lat;
-      lng[i] = ParkData.dogparks[i].Information.lng;
-      this.setState({park: ParkData.dogparks[i].Information.Parkname})
-      this.setState({city: ParkData.dogparks[i].Information.City})
-    }
-    console.log(this.state.parks[0][1]);
+    const url = [
+			`https://gist.githubusercontent.com`,
+			`/MinikLambrecht/5d7c5316d6fef731ff5c35018be774a7`,
+			`/raw/8cd9dc30905f9beeea29f607e8cd0fbd3b4d8579/Dogparks.json`
+		].join("")
+
+		fetch(url)
+		.then(res => res.json())
+		.then(data => {
+			this.setState({markers: data.DogParks_Fyn});
+		});
 	}
 
-
-const markers = this.props.markers
-
-	render(){
-		const AsyncMap = withScriptjs(
-			withGoogleMap(
-				props => (
-					<GoogleMap
-           google={ this.props.google }
-           defaultZoom={ this.state.mapPosition.zoom }
-           defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }}
-					>
-
-						{/* InfoWindow on top of marker */}
-						<InfoWindow
-							onClose={this.onInfoWindowClose}
-							position={{ lat: ( this.state.markerPosition.lat + 0.0018 ), lng: this.state.markerPosition.lng }}
-						>
-							<div>
-								<span style={{ padding: 0, margin: 0, color: '#000' }}>{ this.state.park }</span>
-							</div>
-						</InfoWindow>
-
-						{/*Marker*/}
-						<{testMarker}
-						<Marker />
-            <Autocomplete
-							style={{
-								width: '100%',
-								height: '40px',
-								paddingLeft: '16px',
-								marginTop: '2px',
-								marginBottom: '100px'
-							}}
-							onPlaceSelected={ this.onPlaceSelected }
-							types={['(regions)']}
-						/>
-					</GoogleMap>
-				)
-			)
-		);
-		let map;
-		if( this.props.center.lat !== undefined ) {
-			map = <div>
-				<div>
-					<div className="form-group">
-						<label htmlFor="">City</label>
-						<input type="text" name="city" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.city }/>
-					</div>
-					<div className="form-group">
-						<label htmlFor="">Park</label>
-						<input type="text" name="state" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.park }/>
-					</div>
-					<div className="form-group">
-						<label htmlFor="">Address</label>
-						<input type="text" name="address" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.address }/>
-					</div>
-          <button onClick={this.handleLatitude}> Test </button>
-				</div>
-
-				<AsyncMap
-					googleMapURL= {"https://maps.googleapis.com/maps/api/js?key=" + process.env.REACT_APP_GOOGLE_API_KEY + "&libraries=places"}
-					loadingElement={
-						<div style={{ height: `100%` }} />
-					}
-					containerElement={
-						<div style={{ height: this.props.height }} />
-					}
-					mapElement={
-						<div style={{ height: `100%` }} />
-					}
-				/>
-			</div>
-		} else {
-			map = <div style={{height: this.props.height}} />
+	getOptions( arr ){
+		for( let i = 0; i < this.state.markers.length; i++){
+			arr[i] = this.state.markers[i].Parkname;
 		}
-		return( map )
 	}
-}
 
-export default Map
+	render() {
+		let arrT = [];
+		this.getOptions(arrT);
+    return (
+			<div>
+	      <MapWithAMarkerClusterer markers={this.state.markers} />
+				<br />
+				<div>
+					<Dropdown options={arrT} onChange={this._onSelect} value={arrT[0]} placeholder="Select an option" />
+					<button className="btn btn-primary"> Submit Request </button>
+				</div>
+			</div>
+    )
+  }
+}
