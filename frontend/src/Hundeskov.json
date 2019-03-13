@@ -1,0 +1,59 @@
+{
+   "dogparks":
+   [
+      {
+         "type":"Park",
+         "Information":{
+            "City":"Odense",
+            "Parkname": "Elmelunden hundeskov",
+            "lat": 55.3826,
+            "lng": 10.2668
+         }
+      },
+      {
+         "type":"Park",
+         "Information":{
+           "City":"Odense",
+           "Parkname": "Lolas Lund hundepark",
+           "lat": 55.4235,
+           "lng": 10.3925
+         }
+      },
+      {
+         "type":"Park",
+         "Information":{
+           "City":"Odense",
+           "Parkname": "Kattebjerg hundeskov",
+           "lat": 55.4458,
+           "lng": 10.3273
+         }
+      },
+      {
+         "type":"Park",
+         "Information":{
+           "City":"Odense",
+           "Parkname": "Kirkendrup hundeskov",
+           "lat": 55.4341,
+           "lng": 10.3219
+         }
+      },
+      {
+         "type":"Park",
+         "Information":{
+           "City":"Odense",
+           "Parkname": "Willeruplund hundepark",
+           "lat": 55.4049,
+           "lng": 10.3474
+         }
+      },
+      {
+         "type":"Park",
+         "Information":{
+           "City":"Odense",
+           "Parkname": "Skt. Jørgensparken hundeskov",
+           "lat": 55.3971,
+           "lng": 10.4083
+         }
+      }
+   ]
+}

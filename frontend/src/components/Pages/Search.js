@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MapT from '../Map';
+import Map from '../Map';
 
 import './Styles/SearchCSS.css';
 
@@ -33,8 +33,14 @@ constructor() {
     return (
       <div className="container">
         <div className="map-responsive">
-          <MapT />
+        <Map
+         google={this.props.google}
+         center={{lat: 18.5204, lng: 73.8567}}
+         height='300px'
+         zoom={15}
+        />
         </div>
+
         <input type="text" onChange={this.updateInput} className="form-control" placeholder="Postalcode/City name" />
         <button type="submit" onClick={this.addValue} className="btn btn-primary">Search</button>
       </div>
