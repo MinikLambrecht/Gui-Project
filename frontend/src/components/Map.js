@@ -45,12 +45,18 @@ const MapWithAMarkerClusterer = compose(
   >
 	{props.markers.map(marker => (
 		<Marker
-			key={marker.Id}
+			onClick={this.onMarkerClick}
+			name={"Current Location"}
 			position={{ lat: marker.Coordinates.lat, lng: marker.Coordinates.lng }}
-		>
+		/>
+		<InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        >
 			<div>{marker.Parkname}</div>
-		</Marker>
-	))}
+		</InfoWindow>
+	))} 
   </GoogleMap>
 );
 
