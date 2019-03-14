@@ -3,103 +3,84 @@ import Dropdown from 'react-dropdown';
 import './Pages/Styles/Map.css';
 
 const fetch = require("isomorphic-fetch");
-const { compose, withProps, withHandlers } = require("recompose");
-const { withScriptjs, withGoogleMap, GoogleMap, Marker,} = require("react-google-maps");
 
 /* global google */
-const MapWithAMarkerClusterer = compose(
+const { compose, withProps } = require("recompose");
+const {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+  InfoWindow
+} = require("react-google-maps");
+
+const MapWithAMarker = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=" + process.env.REACT_APP_GOOGLE_API_KEY + "&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
-  withHandlers({
-    onMarkerClustererClick: () => (markerClusterer) => {
-      const clickedMarkers = markerClusterer.getMarkers()
-      console.log(`Current clicked markers length: ${clickedMarkers.length}`)
-      console.log(clickedMarkers)
-    },
-		onMarkerClick: () => (props, marker, e) => {
-	    this.setState({
-	      selectedPlace: props,
-	      activeMarker: marker,
-	      showingInfoWindow: true
-	    });
-		},
-		onClose: () => (props) => {
-		    if (this.state.showingInfoWindow) {
-		      this.setState({
-		        showingInfoWindow: false,
-		        activeMarker: null
-		      });
-		    }
-		  },
-  }),
   withScriptjs,
   withGoogleMap
 )(props =>
   <GoogleMap
-    defaultZoom={12}
+    defaultZoom={11}
     defaultCenter={{ lat: 55.396229, lng: 10.390600 }}
-  >
-	{props.markers.map(marker => (
-		<Marker
-			onClick={this.onMarkerClick}
-			name={"Current Location"}
-			position={{ lat: marker.Coordinates.lat, lng: marker.Coordinates.lng }}
-		/>
-		<InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
-        >
-			<div>{marker.Parkname}</div>
-		</InfoWindow>
-	))} 
+    >
+    {props.markers.map(function(item, index){
+        return(
+          <Marker
+            onClick={props.onMarkerClick}
+            position={{ lat: item.Coordinates.lat, lng: item.Coordinates.lng }}
+          />
+        )
+      }
+    )}
   </GoogleMap>
 );
 
 export default class Map extends Component{
-	componentWillMount() {
-    this.setState({ markers: [] })
+  constructor(props) {
+    super(props);
+    this.state = {
+      markers: [],
+    };
   }
+    /**
+     * Get the current address from the default map position and set those values in the state
+     */
+    componentDidMount() {
+      const url = [
+        `https://gist.githubusercontent.com`,
+        `/MinikLambrecht/5d7c5316d6fef731ff5c35018be774a7`,
+        `/raw/8cd9dc30905f9beeea29f607e8cd0fbd3b4d8579/Dogparks.json`
+      ].join("")
 
-	/**
-	 * Get the current address from the default map position and set those values in the state
-	 */
-	componentDidMount() {
-    const url = [
-			`https://gist.githubusercontent.com`,
-			`/MinikLambrecht/5d7c5316d6fef731ff5c35018be774a7`,
-			`/raw/8cd9dc30905f9beeea29f607e8cd0fbd3b4d8579/Dogparks.json`
-		].join("")
+      fetch(url)
+        .then(results => results.json())
+        .then(results => {
+          this.setState({markers: results.DogParks_Fyn});
+        });
+    }
 
-		fetch(url)
-		.then(res => res.json())
-		.then(data => {
-			this.setState({markers: data.DogParks_Fyn});
-		});
-	}
+    getOptions( arr ){
+      for( let i = 0; i < this.state.markers.length; i++){
+        arr[i] = this.state.markers[i].Parkname;
+      }
+    }
 
-	getOptions( arr ){
-		for( let i = 0; i < this.state.markers.length; i++){
-			arr[i] = this.state.markers[i].Parkname;
-		}
-	}
-
-	render() {
-		let arrT = [];
-		this.getOptions(arrT);
-    return (
+render() {
+  let options = [];
+  this.getOptions(options);
+  return (
 			<div>
-	      <MapWithAMarkerClusterer markers={this.state.markers} />
+        <MapWithAMarker markers={this.state.markers} />
 				<br />
 				<div>
-					<Dropdown options={arrT} onChange={this._onSelect} value={arrT[0]} placeholder="Select an option" />
-					<button className="btn btn-primary"> Submit Request </button>
+          <Dropdown options={options} onChange={this._onSelect} value={options[0]} placeholder="Select an option" />
 				</div>
 			</div>
-    )
+    );
   }
 }

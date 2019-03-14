@@ -16,7 +16,7 @@ class Navbar extends Component {
         const {isAuthenticated, user} = this.props.auth;
         const authLinks = (
           <div className="collapse navbar-collapse" id="NavbarToggle">
-            <NavLink className="navbar-brand" to="/">GDC</NavLink>
+            <NavLink className="navbar-brand" to="/">DBF</NavLink>
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
               <li className="nav-item">
                 <NavLink className="nav-link" exact={true} activeClassName="nav-link active" to="/">Home</NavLink>
