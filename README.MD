@@ -78,10 +78,12 @@ This is a full stack web application built using [React.js](https://reactjs.org/
 
 -   Git clone this [Repo](https://github.com/MinikLambrecht/Gui-Project).
 -   Then Install the dependencies from the terminal in   the root folder.
+
         ```
         $ npm install
         ```
 -   The final step is to install nodemon globally and run the app from the root folder.
+
         ```
         $ npm install -g nodemon
         $ npm run start:dev
