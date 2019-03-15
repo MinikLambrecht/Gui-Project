@@ -136,7 +136,7 @@ Tables:
                   based on email/social media account etc.
         Date:     The date the user was created
 
-**REST API:**
+**REST APIs:**
 
 - Location data
         
@@ -193,6 +193,13 @@ Navbar:
 - Does the links work properly?
 - Is it responsive?
 - Does the collapse button work?
+
+**User friendly functionality:**
+
+- Simple page layout.
+- Easy to understand appointment features.
+- Simple logon/register page.
+- Darker theme for less eye-strain.
 
 ## **Installation**
 
