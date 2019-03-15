@@ -27,9 +27,13 @@ This is a full stack web application built using [React.js](https://reactjs.org/
 **Codes 2xx:**
 
 -   Code: 200 (_OK_)
-        Indicates that the REST API successfully carried out the requested action, the methods used in these requests are (GET, HEAD, POST, TRACE).
+        ```
+        Indicates that the REST API successfully carried out the requested action, the methods used in these requests are (GET, HEAD,           POST, TRACE).
+        ```
 -   Code 201 (_Created_)
+        ```
         The REST API responds whenever a resource is created.
+        ```
 -   Code 202 (_Accepted_)
         Typically used for long processes such as loading a page, authenticating information or an batch-oriented process etc.
 -   Code 204 (_No Content_)
