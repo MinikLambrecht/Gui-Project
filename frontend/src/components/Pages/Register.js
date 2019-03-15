@@ -1,12 +1,22 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
-import { registerUser } from '../../actions/authentication';
-import classnames from 'classnames';
+/**
+ * This component serves as our register page
+ */
+import React, { Component } from 'react';                       // Imports dependencies from react
+import { connect } from 'react-redux';                          // Imports dependencies from react-redux
+import PropTypes from 'prop-types';                             // Imports dependencies from prop-types
+import { withRouter } from 'react-router-dom';                  // Imports dependencies from react-router-dom
+import { registerUser } from '../../actions/authentication';    // Imports our authentication script
+import classnames from 'classnames';                            // Imports dependencies from classnames
 
+/**
+ * This is our class that will be exported and
+ * where all our code is in.
+ */
 class Register extends Component {
-
+  /**
+   * Here we define out states, which is best defined
+   * as a global variable for those who dont know
+   */
     constructor() {
         super();
         this.state = {
@@ -16,16 +26,25 @@ class Register extends Component {
             password_confirm: '',
             errors: {}
         }
+
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    /**
+     * This method handles our input change in the input fields at our registration page
+     * this.handleInputChange
+     */
     handleInputChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
+    /**
+     * This method handles the submit event
+     * this.handleSubmit
+     */
     handleSubmit(e) {
         e.preventDefault();
         const user = {
@@ -37,6 +56,11 @@ class Register extends Component {
         this.props.registerUser(user, this.props.history);
     }
 
+    /**
+     * Built-in method that handles state update events.
+     * We use this to update important states that should not
+     * be updated in the render() method
+     */
     componentWillReceiveProps(nextProps) {
         if(nextProps.auth.isAuthenticated) {
             this.props.history.push('/')
@@ -48,12 +72,20 @@ class Register extends Component {
         }
     }
 
+    /**
+     * Built-in method that runs when our page has loaded.
+     * We currently use this feature to check if the user currnetly
+     * is authenticated
+     */
     componentDidMount() {
         if(this.props.auth.isAuthenticated) {
             this.props.history.push('/');
         }
     }
 
+   /**
+    * Render our page while handling the events we've setup
+    */
     render() {
         const { errors } = this.state;
         return(

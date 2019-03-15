@@ -1,6 +1,12 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+/**
+ * This component serves as our 404 page
+ */
+import React from 'react';                              // Imports dependencies from react
+import { Link, withRouter } from 'react-router-dom';    // Imports dependencies from react-router-dom
 
+/**
+ * Exports our contact page so it can be used later on
+ */
 const NotFound = () => (
 <div className="page-wrap d-flex flex-row align-items-center">
   <div className="container">

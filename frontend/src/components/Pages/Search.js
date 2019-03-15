@@ -1,41 +1,23 @@
-import React, { Component } from 'react';
-import Map from '../Map';
+/**
+ * This component serves as our search page
+ */
+import React, { Component } from 'react';   // Imports dependencies from react
+import Map from '../Map';                   // Imports our Map.js component
 
-import './Styles/SearchCSS.css';
-
+/**
+ * This is our class that will be exported and
+ * where all our code is in.
+ */
 export default class Search extends Component {
-constructor() {
-  super();
-  this.state = {
-    updateLoc: '',
-    location: 'http://maps.google.com/?q=5700&output=embed'
-    };
-
-    this.addValue = this.addValue.bind(this);
-    this.updateInput = this.updateInput.bind(this);
-  }
-
-  addValue(evt){
-    evt.preventDefault();
-    if (this.state.updateLoc !== undefined)
-    {
-      this.setState({ location: this.state.updateLoc })
-    }
-  }
-
-  updateInput(evt) {
-    this.setState({ updateLoc: 'http://maps.google.com/?q=' + evt.target.value + ', dog park&output=embed' })
-  }
-
-
-
+  /**
+   * Renders our Search page and exports it, so it can be used later on
+   */
   render() {
     return (
       <div className="container">
         <div>
-        <Map />
+          <Map />
         </div>
-
       </div>
     );
   }

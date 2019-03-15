@@ -1,9 +1,16 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import PhoneInput from '../PhoneInput';
+/**
+ * This component serves as our contact page
+ */
 
-import './Styles/ContactCSS.css';
+import React from 'react';                        // Imports dependencies from react
+import { withRouter } from 'react-router-dom';    // Imports dependencies from react-router-dom
+import PhoneInput from '../PhoneInput';           // Imports our PhoneInput Component
 
+import './Styles/ContactCSS.css';                 // Imports stylesheet
+
+/**
+ * Exports our Contact page so it can be used later on
+ */
 const Contact = () => (
   <div className="container">
     <div className='jumbotron jumbotron-sm'>

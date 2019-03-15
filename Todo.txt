@@ -1,8 +1,0 @@
-[Ideas]
-- Make contact form send the message to a db.
-
-[Bugs]
-None >:3
-
-[WIP]
-- Use of Environmental Variables (.env)

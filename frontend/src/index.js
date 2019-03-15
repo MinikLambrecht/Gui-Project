@@ -1,22 +1,30 @@
-import App from './App';
-import React from 'react';
-import store from './store';
-import {render} from 'react-dom';
-import jwt_decode from 'jwt-decode';
-import { Provider } from 'react-redux';
-import setAuthToken from './setAuthToken';
-import { setCurrentUser, logoutUser } from './actions/authentication';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+/**
+ * This is used as our routing script
+ */
+import App from './App';                                                  // Imports our App component
+import React from 'react';                                                // Imports dependencies from react
+import store from './store';                                              // Imports our store script
+import {render} from 'react-dom';                                         // Imports dependencies from react-dom
+import jwt_decode from 'jwt-decode';                                      // Imports dependencies from jwt.decode
+import { Provider } from 'react-redux';                                   // Imports dependencies from react-redux
+import setAuthToken from './setAuthToken';                                // Imports our setAuthToken script
+import { setCurrentUser, logoutUser } from './actions/authentication';    // Imports our authentication script
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'   // Imports dependencies from react-router-dom
 
-import Contact from './components/Pages/Contact';
-import Register from './components/Pages/Register';
-import Login from './components/Pages/Login';
-import Home from './components/Pages/Home';
-import Search from './components/Pages/Search';
-import NotFound from './components/Pages/NotFound';
+import Contact from './components/Pages/Contact';                         // Imports our Contact page
+import Register from './components/Pages/Register';                       // Imports our Register page
+import Login from './components/Pages/Login';                             // Imports our Login page
+import Home from './components/Pages/Home';                               // Imports our Home page
+import Search from './components/Pages/Search';                           // Imports our Search page
+import NotFound from './components/Pages/NotFound';                       // Imports our NotFound page
 
-import './components/Pages/Styles/DefaultTheme.css';
+import './components/Pages/Styles/DefaultTheme.css';                      // Imports stylesheet
 
+/**
+ * Checks if we have a token saved in our localStorage.
+ * If we do, decode it and set it to our current user,
+ * and check if the time on the token has expired (Session run out)
+ */
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -29,6 +37,9 @@ if(localStorage.jwtToken) {
   }
 }
 
+/**
+ * This defines our routes and handles routing events
+ */
 render((
   <Provider store = { store }>
     <Router>

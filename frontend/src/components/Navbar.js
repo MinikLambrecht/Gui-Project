@@ -1,17 +1,31 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { logoutUser } from '../actions/authentication';
-import { withRouter } from 'react-router-dom';
+/**
+ * This is a component that renders our navbar
+ */
+import React, { Component } from 'react';                 // Imports dependencies from react
+import PropTypes from 'prop-types';                       // Imports dependecies from prop-types
+import { connect } from 'react-redux';                    // Imports dependencies from react-reduc
+import { logoutUser } from '../actions/authentication';   // Imports our authentication script
+import { withRouter, NavLink } from 'react-router-dom';   // Imports dependencies from react-router-dom
 
+/**
+ * This is our class that will be exported and
+ * where all our code is in.
+ */
 class Navbar extends Component {
-
+    /**
+     * Log out event
+     * this.onLogout.bind(this)
+     */
     onLogout(e) {
         e.preventDefault();
         this.props.logoutUser(this.props.history);
     }
 
+    /**
+     * Check if the user is currently logged in.
+     * If they're not logged in, display login/register buttons,
+     * else hide them and display links to member only pages
+     */
     render() {
         const {isAuthenticated, user} = this.props.auth;
         const authLinks = (
@@ -40,7 +54,7 @@ class Navbar extends Component {
         )
       const guestLinks = (
       <div className="collapse navbar-collapse" id="NavbarToggle">
-        <NavLink className="navbar-brand" to="/">GDC</NavLink>
+        <NavLink className="navbar-brand" to="/">DBF</NavLink>
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item">
             <NavLink className="nav-link" exact={true} activeClassName="nav-link active" to="/">Home</NavLink>

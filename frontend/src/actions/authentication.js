@@ -1,8 +1,14 @@
-import axios from 'axios';
-import { GET_ERRORS, SET_CURRENT_USER } from './types';
-import setAuthToken from '../setAuthToken';
-import jwt_decode from 'jwt-decode';
+/**
+ * A script to handle API calls for hte register/login system
+ */
+import axios from 'axios';                                // Imports dependencies from axios
+import { GET_ERRORS, SET_CURRENT_USER } from './types';   // Imports our types script
+import setAuthToken from '../setAuthToken';               // Imports our setAuthToken script
+import jwt_decode from 'jwt-decode';                      // Imports dependencies from jwt-decode
 
+/**
+ * API Call to handle user registrations
+ */
 export const registerUser = (user, history) => dispatch => {
     axios.post('/api/users/register', user)
             .then(res => history.push('/login'))
@@ -14,6 +20,9 @@ export const registerUser = (user, history) => dispatch => {
             });
 }
 
+/**
+ * API Call to handle user logins
+ */
 export const loginUser = (user) => dispatch => {
     axios.post('/api/users/login', user)
             .then(res => {
@@ -31,6 +40,9 @@ export const loginUser = (user) => dispatch => {
             });
 }
 
+/**
+ * Method to easier get the current user
+ */
 export const setCurrentUser = decoded => {
     return {
         type: SET_CURRENT_USER,
@@ -38,6 +50,9 @@ export const setCurrentUser = decoded => {
     }
 }
 
+/**
+ * Method to logout the current user
+ */
 export const logoutUser = (history) => dispatch => {
     localStorage.removeItem('jwtToken');
     setAuthToken(false);

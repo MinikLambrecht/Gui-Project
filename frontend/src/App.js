@@ -1,7 +1,14 @@
-import React from 'react';
+/**
+ * Main component that is the core of our SPA
+ */
 
-import Navbar from './components/Navbar';
+import React from 'react';                  // Imports dependencies from react
 
+import Navbar from './components/Navbar';   // Imports our Navbar Component
+
+/**
+ * Renders our SPA 
+ */
 const App = ({ children }) => (
   <div>
     <header>

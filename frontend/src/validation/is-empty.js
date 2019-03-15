@@ -1,3 +1,4 @@
+// Check if the input values is empty and return the result
 const isEmpty = (value) => {
     return (
         value === undefined ||
