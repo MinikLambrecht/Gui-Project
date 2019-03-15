@@ -116,6 +116,84 @@ This is a full stack web application built using [React.js](https://reactjs.org/
         The server either does not recognize the request method, 
         or it lacks the ability to fulfill the request.
 
+**Database:**
+
+What does the database do:
+
+- User details pulled to validation
+- User details created and encrypted
+- Can be used to a messaging system later on
+
+Tables:
+
+- Users
+
+        _ID:      This row s the ID/Index of our user
+        name:     This row contains our name
+        email:    This row contains our email
+        password: This row contains our hashed password.
+        String:   This row defines what images is used as our gravatar,
+                  based on email/social media account etc.
+        Date:     The date the user was created
+
+**REST API:**
+
+- Location data
+        
+        We're fectching our data on dog parks from a remote API and use it to define locations on our Maps API
+        
+- Google Maps API
+
+        We're using a custom made API that accesses googles REST API to use for react
+        
+- Gravatar
+
+        This package fetctes an image connected to the mail/social media acc/google account etc.
+
+**Architecture:**
+
+- Viewmodel/DTO
+
+        A viewmodel is a template for the data we want to get, eitehr from a local API or a remote API
+
+- Router / Routing
+
+        Tells our web app where to find the specified page for the given URL
+        
+**Tests:**
+
+Register:
+- Can the user register with blanks in the input fields?
+- Can the user make a password under 6 characters?
+- Can the user make an invalid email?
+- Does the confirm password input field work properly?
+- Can a user use the same email twice?
+
+Login:
+- Can a user login with blanks?
+- Can the user login into an account without a password
+- Can a user login with an non-existing email/password?
+- Can a user login with a wrong password/email?
+- Does the user get a token when logged in?
+
+Validation:
+- Is emails validated on signin?
+- Is passwords validated on signin?
+
+Logout:
+- Is the function available at all times?
+- Does it redirect the user when logged out?
+
+Maps:
+- Does it display the right markers according to our data?
+- Can the user move freely? (Zoom, double click etc.)
+- Does the map display at all?
+
+Navbar:
+- Does the links work properly?
+- Is it responsive?
+- Does the collapse button work?
+
 ## **Installation**
 
 -   Git clone this [Repo](https://github.com/MinikLambrecht/Gui-Project).
