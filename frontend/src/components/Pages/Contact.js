@@ -74,7 +74,7 @@ const Contact = () => (
         </div>
         <div className="col-md-4">
           <form>
-            <legend><span className="glyphicon glyphicon-globe"></span> GDC Playtime, Inc. Office</legend>
+            <legend><span className="glyphicon glyphicon-globe"></span> DBF Inc. Office</legend>
             <hr />
             <address>
               <strong>Address</strong><br />
@@ -82,14 +82,14 @@ const Contact = () => (
               San Francisco, CA 94107<br />
 
               <div style={{height: '300px', width: '400px', color: '#000'}}>
-                <iframe title="GDCLocation" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.340648538445!2d-122.40267868391813!3d37.78205581899731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085807e0e3b97b5%3A0x2483cdf8ec689a6!2s795+Folsom+St+%23600%2C+San+Francisco%2C+CA+94107%2C+USA!5e0!3m2!1sda!2sdk!4v1551777408620" width="400" height="300" frameBorder="0" allowFullScreen></iframe>
+                <iframe title="DBFLocation" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.340648538445!2d-122.40267868391813!3d37.78205581899731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085807e0e3b97b5%3A0x2483cdf8ec689a6!2s795+Folsom+St+%23600%2C+San+Francisco%2C+CA+94107%2C+USA!5e0!3m2!1sda!2sdk!4v1551777408620" width="400" height="300" frameBorder="0" allowFullScreen></iframe>
               </div>
 
               <strong>Phone</strong><br />
               +1 (628) 777-9846 <br />
 
               <strong>E-mail</strong><br />
-              <a href="mailto:#">Playtime@GDC.com</a>
+              <a href="mailto:#">Playtime@DBF.com</a>
             </address>
           </form>
         </div>

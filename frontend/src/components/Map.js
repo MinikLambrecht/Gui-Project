@@ -20,12 +20,9 @@ const requests = [
   {Id: 1, name: "George", mail: "George@gmail.com", phone: "67558246", msg: "Hello fellow dog lovers. Me an my dog are heading our to the park, com meet us! My brian is a 2 year old Akita and loves to play and have fun, we'll be at the park the next 2 hours!"},
   {Id: 2, name: "Liz", mail: "Liz@gmail.com", phone: "91854762", msg: "I've just gotten my little baby and want her to get used to other dogs, we're going to the park in 30 minutes, Crystal is 1 month old, She's a pure Pomeranian and has soo much energy. Come to the park and help her loose a little up around her own kin!"}
 ];
-const listRequestMsgs = requests.map((data) =>
-  <li key={data.Id}>{data.msg}</li>
-);
 
 const listRequestNames = requests.map((data) =>
-  <li key={data.Id}>{data.name} <ul>{listRequestMsgs}</ul></li>
+  <li key={data.Id}>{data.name} <ul>{data.msg}</ul></li>
 );
 
 /**
@@ -163,6 +160,7 @@ render() {
                 <input type="text" placeholder="Name" required/> <br/> <br/>
                 <input type="email" placeholder="Mail" required/> <br/> <br/>
                 <PhoneInput />
+                <br />
                 <button type="submit" className="btn btn-primary">Add new request</button>
               </div>
               <div className="col-8">
